@@ -61,7 +61,7 @@ def update(id):
             db = get_db()
             db.execute(
                 db.execute(
-                    'UPDATE pos SET title = ?, body = ?'
+                    'UPDATE post SET title = ?, body = ?'
                     ' WHERE id = ?',
                     (title, body, id) 
                 )
