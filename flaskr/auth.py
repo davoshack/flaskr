@@ -8,6 +8,7 @@ from flaskr.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
@@ -15,7 +16,7 @@ def register():
         password = request.form['password']
         db = get_db()
         error = None
-        
+
         if not username:
             error = 'User is required.'
         elif not password:
@@ -35,6 +36,7 @@ def register():
         flash(error)
 
     return render_template('auth/register.html')
+
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
@@ -61,10 +63,12 @@ def login():
 
     return render_template('auth/login.html')
 
+
 @bp.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
 
 def login_required(view):
     @functools.wraps(view)
@@ -74,6 +78,7 @@ def login_required(view):
         return view(**kwargs)
 
     return wrapped_view
+
 
 @bp.before_app_request
 def load_logged_in_user():
