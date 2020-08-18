@@ -87,7 +87,7 @@ def get_post(id, check_author=True):
 
     Checks that the id exists and optionally that the current user is
     the author.
-    
+
     :param id: id of post to get
     :param check_author: require the current user to be the author
     :return: the post with author information
